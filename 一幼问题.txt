@@ -1,0 +1,101 @@
+1.一幼圈班级点赞功能
+2.评论点击隐藏功能  已解决
+3.点名显示问题
+4.点名图标样式问题
+5.投票手机app样式问题
+6.问卷调查整体逻辑混乱不能使用
+
+
+<!DOCTYPE html>
+<html>
+	<head>
+    <title>请假申请</title>
+    <meta charset="utf-8" />
+</head>
+
+<body>
+  <div class="page" id="page-vacation-student">
+  <!-- 标题栏 -->
+   	 <v-bar title="请假">
+		<a class="icon icon-left pull-left  back no-transition" slot="left"></a>
+	 </v-bar>
+	    <div class="content" >
+		<div id="form-vacation" >
+				<ul class="vacation-list"  style="margin-top:0px;">
+					<li>
+						<label>申&nbsp;请&nbsp;&nbsp;人:</label>
+						<input id="vacatename" type="text" value=""  placeholder="李晓明"/>
+					</li>
+					<li id="vacation-type">
+									<label>请假类别:</label>
+									<input id="vacat-t" type="text" data-type="" placeholder="请填写请假类别" />
+									<div id="vacation-cho">
+										<ul class="vacation-type">
+											<li v-for="item in vacatetype">
+												<a data-type="{{item.enum_ID}}">{{item.item_VALUE}}</a>
+											</li>
+										</ul>
+									</div>
+					</li>
+					<li>
+						<label>开始时间:</label>
+						<input  type="text" id="startime"  />
+					</li>
+					<li>
+						<label>结束时间:</label>
+						<input type="text"id="endtime"  />
+					</li>
+					<li>
+						<label>请假原因:</label>
+						<textarea id="reason" placeholder="请填写请假原因..." style="resize:none; width: 68%; height:6rem;background: #EEEEEE;border-radius: 5px;"></textarea>
+					</li>
+				</ul>
+				<div class="va-sub" >
+                               <a class="sub confirm-ok">提交申请</a>
+                 </div>
+		    </div>	   
+					      	
+					     
+		 </div>
+  </div>
+</body>
+</html>
+
+getTimeTip: utils.getTimeTip,
+					waitMd5: function(code) {
+						$.router.loadPage({
+							url: "vacation-information.html?id=" + code,
+							noAnimation: true,
+							replace: false
+						});
+					},
+
+
+
+
+	/*		var classId = CURRENT_USER.SELECTED_CHILD.CLASS_ID;*/
+
+
+
+
+
+
+
+
+if(nowDateTime == 10002) {
+								alert("22222")
+								vm.nowdate = 0;
+								$.ajax({
+									type: "get",
+									url: url + "/client/rollCall/findRecord?time=" + daydate + "&classId=" + classId,
+									async: true,
+									success: function(data) {
+										vm.stlist = data.stuList;
+										vm.num1 = data.ABSENCE_NUM;
+										vm.num2 = data.VACATE_NUM;
+										vm.num3 = data.ARRIVED_STU_NUM;
+									}
+								});
+							} else {
+								vm.nowdate = 1;
+							}
